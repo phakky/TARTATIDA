@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisasi Kami</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(45deg, #00B4DB, #0083B0);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: linear-gradient(45deg, #00B4DB, #0083B0);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #00B4DB, #0083B0);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        .sections {
+            padding: 6rem 2rem;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 6rem auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .section h3 {
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(45deg, #00B4DB, #0083B0);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #00B4DB, #0083B0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h4 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00B4DB;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .contact-item {
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MPK/OSIS SMAN 2 BATANG</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Selamat Datang di Website MPK/OSIS SMAN 2 BATANG</h2>
+                <p>Zat-Zet Tas-Tes Sakjosse</p>
+                <a href="#program" class="hero-btn">Jelajahi Program Kami</a>
+            </div>
+        </section>
+
+        <div class="sections">
+            <section id="tentang" class="section">
+                <h3>Tentang Kami</h3>
+                <p>Organisasi kami berkomitmen untuk memberikan dampak positif bagi masyarakat melalui berbagai program dan inisiatif yang inovatif.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">32</div>
+                        <p>Anggota Aktif</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <p>Program Terlaksana</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <p>Mitra Kerja</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <p>Penghargaan</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="program" class="section">
+                <h3>Program Unggulan</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>SMANDA SCHOOL GAMES</h4>
+                        <p>Program Untuk Mencari Bibit-bibit Unggul Untuk Menghasilkan Siswa/i yang Berprestasi dalam bidang non-Akademik.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Pendidikan Berkelanjutan Mahasiswa</h4>
+                        <p>Program yang Dilaksanakan Dengan Tujuan Untuk Mengetahui Minat Siswa/i Untuk Melanjutkan Kehidupan Setelah Sekolah </p>
+                    </div>
+                    <div class="card">
+                        <h4>Forum Aspirasi Siswa</h4>
+                        <p>Program yang Diadakan Sebagai Acara Untuk Semua Siswa/i SMAN 2 BATANG Menyuarakan Hak-Haknya Sebagai Warga SMAN 2 BATANG.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="kontak">
+        <h3>Kontak Kami</h3>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>Alamat</h4>
+                <p>Jalan Semar Mesem, Krengseng, Rowobelang</p>
+                <p>Kota Batang, Provinsi Jawa Tengah</p>
+            </div>
+            <div class="contact-item">
+                <h4>Email</h4>
+                <p>smandatv18@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <h4>Telepon</h4>
+                <p>(+62) 85876184870
+                  <p>(+62) 85647919627
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
